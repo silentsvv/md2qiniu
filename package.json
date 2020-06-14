@@ -1,0 +1,79 @@
+{
+	"name": "md2qiniu",
+	"displayName": "md2qiniu",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.45.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:md2qiniu.postImage"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "md2qiniu.postImage",
+				"title": "上传图片"
+			}
+		]
+	},
+	"configuration": {
+		"type": "object",
+		"title": "md2qiniu configuration",
+		"properties": {
+		  "md2qiniu.accessKey": {
+			"type": "string",
+			"default": "",
+			"description": "一个有效的七牛 AccessKey 签名授权。"
+		  },
+		  "md2qiniu.secretKey": {
+			"type": "string",
+			"default": "",
+			"description": "一个有效的七牛 SecretKey 签名授权。"
+		  },
+		  "md2qiniu.bucket": {
+			"type": "string",
+			"default": "",
+			"description": "七牛图片上传空间。"
+		  },
+		  "md2qiniu.assetPath": {
+			"type": "string",
+			"default": "",
+			"description": "七牛图片上传路径。"
+		  },
+		  "md2qiniu.publicPath": {
+			"type": "string",
+			"default": "",
+			"description": "七牛域名路径。"
+		  }
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.45.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"@typescript-eslint/parser": "^2.30.0",
+		"@typescript-eslint/eslint-plugin": "^2.30.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	},
+	"dependencies": {
+		"qiniu": "^7.3.1"
+	}
+}
